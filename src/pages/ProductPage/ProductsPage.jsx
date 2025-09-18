@@ -43,11 +43,12 @@ const ProductsPage = () => {
             onChange={(e) => setSearch(e.target.value)}
             className="ml-10 w-200 outline-0 border-0 playfair py-4"
           />
-          <button className="bg-[#646B5D] cursor-pointer rounded-r-full py-2 absolute right-0 w-20 flex items-center justify-center">
-            <Search color="#fff" size={40} />
-          </button>
         </div>
       </div>
+      <div className="back-circles w-full h-screen -z-10 absolute flex items-center justify-between -mt-10">
+                <div className="circle-left bg-[#A7B3A2] rounded-full h-150 w-150 -ml-30 -mt-50"></div>
+                <div className="circle-right bg-[#A7B3A2] rounded-full h-150 w-150 -mr-60 mt-2  00"></div>
+            </div>
 
       <div className="cards mt-30 flex flex-wrap gap-20 items-center justify-center">
         {filteredProducts.map((product) => (
@@ -55,7 +56,7 @@ const ProductsPage = () => {
             key={product.id}
             title={product.title}
             price={product.price}
-            // تأخذ الصورة الأولى من المصفوفة
+           
             image={product.images[0]}
             category={product.category.name}
           />
