@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { useSelector } from "react-redux";
 import About from "../../pages/About/About";
+import Services from "../../sections/Services/Services";
 
 const Header = () => {
   const products = useSelector((state) => state.newProducts.NewProduct);
@@ -59,7 +60,9 @@ const Header = () => {
             </li>
             <li>
               <Link
-                className="text-[20px] font-bold hover:text-[#A7B3A2] duration-100"
+                className={`text-[20px] font-bold hover:text-[#A7B3A2] duration-100 ${
+                  location.pathname === "/about" && "activated"
+                }`}
                 to="/about"
               >
                 About
@@ -67,8 +70,10 @@ const Header = () => {
             </li>
             <li>
               <Link
-                className="text-[20px] font-bold hover:text-[#A7B3A2] duration-100"
-                to="#"
+                className={`text-[20px] font-bold hover:text-[#A7B3A2] duration-100 ${
+                  location.pathname === "/services" && "activated"
+                }`}
+                to="/services"
               >
                 Services
               </Link>
@@ -96,6 +101,7 @@ const Header = () => {
         <Route path="/" element={<App />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
       </Routes>
     </>
   );

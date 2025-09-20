@@ -16,7 +16,7 @@ const Products = () => {
   const firstProducts = products.slice(0, 8);
 
   return (
-    <section className="mt-60 px-20 pb-20 relative">
+    <section className="mt-60 px-20 mb-40 pb-20 relative">
       <h1 className="text-[#646B5D] playfair text-8xl font-bold">Products</h1>
 
       <div className="cards mt-50 flex flex-wrap gap-20 items-center justify-center">

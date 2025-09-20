@@ -5,29 +5,46 @@ import serv_cl from "../../../public/images/serv-cl.png"
 
 
 const Services = () => {
+    const services = [
+    {
+      img: COD,
+      title: "Cash On Delivery",
+      desc: "Pay securely at your doorstep when your order arrives."
+    },
+    {
+      img: fast_d,
+      title: "Fast Delivery",
+      desc: "Quick, reliable delivery to get your products on time."
+    },
+    {
+      img: free_d,
+      title: "Free Shipping",
+      desc: "Enjoy free shipping on all orders above a certain amount."
+    },
+    {
+      img: serv_cl,
+      title: "After-Sales Service",
+      desc: "Dedicated support to assist you even after purchase."
+    },
+  ];
   return (
     <>
-      <section className="mt-150 relative">
+      <section className="mt-50 relative">
           <div className="absolute circle-left bg-[#A7B3A2] rounded-full h-120 w-120 -ml-40 -z-10"></div>
           <h1 className="-rotate-90 text-[13rem] font-bold -left-70 top-30 absolute playfair text-[#646B5D]">Services</h1>
-          <div className="ml-70 px-40 gap-50 items-center justify-center flex flex-wrap ">
-            <div className="card">
-                <img src={COD} alt="COD" width={300}/>
-                <h3 className="text-[#646B5D] font-bold text-4xl text-center mt-10">Cash On Delivery</h3>
+          
+           <div className="flex flex-wrap gap-10 ml-150">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl p-8 flex flex-col items-center transition-transform transform hover:-translate-y-1"
+            >
+              <img src={service.img} alt={service.title} className="w-40 h-40 object-contain" />
+              <h3 className="mt-6 text-2xl font-bold text-[#646B5D] text-center">{service.title}</h3>
+              <p className="mt-3 text-gray-600 text-center text-sm">{service.desc}</p>
             </div>
-            <div className="card">
-                <img src={fast_d} alt="COD" width={300}/>
-                <h3 className="text-[#646B5D] font-bold text-4xl text-center mt-10">Fast Delivery</h3>
-            </div>
-            <div className="card">
-                <img src={free_d} alt="COD" width={300}/>
-                <h3 className="text-[#646B5D] font-bold text-4xl text-center mt-10">Free Shipping</h3>
-            </div>
-            <div className="card">
-                <img src={serv_cl} alt="COD" width={300}/>
-                <h3 className="text-[#646B5D] font-bold text-4xl text-center mt-10">Service After  Sell</h3>
-            </div>
-          </div>
+          ))}
+        </div>
       </section>
     </>
   );
