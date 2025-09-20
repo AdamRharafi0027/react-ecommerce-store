@@ -5,12 +5,16 @@ import App from './App.jsx'
 import Header from './components/Header/Header.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store/store.jsx';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Header/>   
+      <Provider store={store}>
+        <Header/>   
       <Footer />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

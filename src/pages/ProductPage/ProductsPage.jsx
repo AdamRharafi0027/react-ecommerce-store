@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+
 import { useEffect, useState } from "react";
 import Cards from "../../components/Cards/Cards";
 import DropDownFilter from "../../components/DropDownFilter/DropDownFilter";
@@ -7,6 +7,7 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+
 
   useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
@@ -26,6 +27,7 @@ const ProductsPage = () => {
 
   return (
     <section>
+
       <h1 className="text-center text-8xl playfair font-bold text-[#646B5D] mb-20">
         Products
       </h1>
@@ -54,11 +56,7 @@ const ProductsPage = () => {
         {filteredProducts.map((product) => (
           <Cards
             key={product.id}
-            title={product.title}
-            price={product.price}
-           
-            image={product.images[0]}
-            category={product.category.name}
+            product={product}
           />
         ))}
       </div>

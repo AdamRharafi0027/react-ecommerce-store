@@ -23,10 +23,7 @@ const Products = () => {
         {firstProducts.map((product) => (
           <Cards
             key={product.id}
-            title={product.title}
-            rate={product.rating || "N/A"}
-            price={product.price}
-            image={product.images[0]}
+            product={product}
           />
         ))}
       </div>
