@@ -11,7 +11,7 @@ const Hero = () => {
                 <div className="circle-right bg-[#A7B3A2] rounded-full h-230 w-230 -mr-60"></div>
             </div>
             {/* HERO CONTEXT */}
-            <div className=" flex items-center  w-full h-[calc(100vh-7.5rem)]">
+            <div className="context flex items-center  w-full h-[calc(100vh-7.5rem)]">
                 <h1 className=" text-[#646B5D] text-9xl font-bold playfair ml-20 w-[1000px] leading-[170px]">
                     Style Delivered: Shop the Latest Trends in Fashion
                 </h1>

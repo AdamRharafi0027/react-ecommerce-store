@@ -1,0 +1,24 @@
+@media screen and (max-width: 850px) {
+    section {
+       && .back-circles {
+            display: none;
+        }
+        && .context {
+            display: flex;
+            flex-direction: column-reverse;
+            && h1 {
+                font-size: 2.3rem;
+                line-height: normal;
+                width: 400px;
+                margin: auto;
+                text-align: center;
+                margin-top: -10px;
+            }
+            && img {
+                position: static;
+                margin: auto;
+                margin-top: -20px;
+            }
+        }
+    }
+}

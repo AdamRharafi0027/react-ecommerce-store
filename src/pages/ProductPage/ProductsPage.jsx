@@ -28,10 +28,10 @@ const ProductsPage = () => {
   return (
     <section>
 
-      <h1 className="text-center text-8xl playfair font-bold text-[#646B5D] mb-20">
+      <h1 className="text-center text-5xl lg:text-8xl playfair font-bold text-[#646B5D] mb-20">
         Products
       </h1>
-      <div className="px-50 flex items-center justify-center gap-10">
+      <div className="px-50 flex items-center justify-center gap-10 flex-col-reverse">
         <DropDownFilter
           products={products}
           selected={selectedCategory}
@@ -43,7 +43,7 @@ const ProductsPage = () => {
             placeholder="Search..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="ml-10 w-200 outline-0 border-0 playfair py-4"
+            className="w-80 ml-10 lg:w-200 outline-0 border-0 playfair py-4"
           />
         </div>
       </div>
@@ -52,7 +52,7 @@ const ProductsPage = () => {
                 <div className="circle-right bg-[#A7B3A2] rounded-full h-150 w-150 -mr-60 mt-2  00"></div>
             </div>
 
-      <div className="cards mt-30 flex flex-wrap gap-20 items-center justify-center">
+      <div className="cards mt-10 flex flex-wrap gap-20 items-center justify-center">
         {filteredProducts.map((product) => (
           <Cards
             key={product.id}

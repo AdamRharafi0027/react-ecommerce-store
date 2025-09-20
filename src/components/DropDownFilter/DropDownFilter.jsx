@@ -26,7 +26,7 @@ const DropDownFilter = ({ products, selected, setSelected }) => {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-[#a7b3a252] rounded-xl shadow-lg z-50">
+        <div className="absolute right-0 mt-2 w-40 bg-[#a7b3a2] rounded-xl shadow-lg z-50">
           <ul className="py-2">
             {categories.map((option) => (
               <li

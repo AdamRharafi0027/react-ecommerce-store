@@ -1,39 +1,42 @@
-import Cards from "../../components/Cards/Cards";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cards from "../../components/Cards/Cards";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProducts(data))
+      .catch((err) => console.error("Error fetching products:", err));
   }, []);
 
-  // ناخذ فقط 8 منتجات
   const firstProducts = products.slice(0, 8);
 
   return (
-    <section className="mt-60 px-20 mb-40 pb-20 relative">
-      <h1 className="text-[#646B5D] playfair text-8xl font-bold">Products</h1>
+    <section className="relative px-6 md:px-12 lg:px-20 mt-32 md:mt-40 mb-32 md:mb-40">
+      <h1 className="text-[#646B5D] playfair text-6xl md:text-6xl lg:text-8xl font-bold text-center">
+        Products
+      </h1>
 
-      <div className="cards mt-50 flex flex-wrap gap-20 items-center justify-center">
+      {/* Cards grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-16">
         {firstProducts.map((product) => (
-          <Cards
-            key={product.id}
-            product={product}
-          />
+          <Cards key={product.id} product={product} />
         ))}
       </div>
 
-      <button
-        onClick={() => navigate("/products")}
-        className="bg-[#646B5D] text-white px-20 py-3 rounded-md text-2xl cursor-pointer absolute -bottom-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-      >
-        View All
-      </button>
+      {/* View all button */}
+      <div className="flex justify-center mt-12">
+        <button
+          onClick={() => navigate("/products")}
+          className="bg-[#646B5D] text-white px-10 md:px-16 py-3 rounded-full text-lg md:text-xl hover:bg-[#A7B3A2] transition-colors"
+        >
+          View All
+        </button>
+      </div>
     </section>
   );
 };
