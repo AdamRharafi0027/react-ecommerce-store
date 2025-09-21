@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import About from "../../pages/About/About";
 import Services from "../../sections/Services/Services";
 import Favorites from "../../pages/Favorites/Favorites";
+import ProductDetails from "../../pages/ProductDetails/ProductDetails";
 
 const Header = () => {
   const products = useSelector((state) => state.newProducts.NewProduct);
@@ -38,8 +39,8 @@ const Header = () => {
     <>
       {/* HEADER */}
       <header
-        className={`sticky top-0 flex items-center shadow-md justify-between text-[#646B5D] px-6 md:px-20 py-4 md:py-10 h-30 w-full z-50 transition-colors duration-300 ${
-          scrolled ? "backdrop-blur-md bg-white/70 " : "bg-transparent"
+        className={`sticky top-0 flex items-center  justify-between text-[#646B5D] px-6 md:px-20 py-4 md:py-10 h-30 w-full z-50 transition-colors duration-300 ${
+          scrolled ? "backdrop-blur-md bg-white/70 shadow-md" : "bg-transparent"
         }`}
       >
         <Link to={"/"}>
@@ -108,6 +109,7 @@ const Header = () => {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/productsDetails/:id" element={<ProductDetails />} />
       </Routes>
     </>
   );

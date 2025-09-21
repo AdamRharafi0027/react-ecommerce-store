@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../slices/ProductSlices";
 import { useState } from "react";
 import { addFavorite, removeFavorite } from "../../slices/FavoriteSlices";
+import { Link } from "react-router-dom";
 
 const Cards = ({ product }) => {
   const dispatch = useDispatch();
@@ -63,9 +64,11 @@ const handleDeleteFavorite = () => {
               >
                 <ShoppingBag color="#fff" />
               </button>
-              <button className="cursor-pointer bg-[#646B5D] px-7 py-2 rounded-md hover:bg-[#646b5d86] duration-200">
+              <Link to={`/productsDetails/${product.id}`}>
+                <button className="cursor-pointer bg-[#646B5D] px-7 py-2 rounded-md hover:bg-[#646b5d86] duration-200">
                 <Info color="#fff" />
               </button>
+              </Link>
             </div>
           </div>
         </div>

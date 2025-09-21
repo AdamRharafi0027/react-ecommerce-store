@@ -59,7 +59,8 @@ const ShoppingCart = ({ showCart }) => {
 
       {/* Products List */}
       <div className="mt-4 h-[60%] overflow-y-auto flex flex-col gap-4">
-        {products.map((product) => (
+        {products.length > 0 ? (
+          products.map((product) => (
           <div
             key={product.id}
             className="bg-white shadow-lg rounded-2xl p-3 sm:p-4 flex items-center gap-4 hover:shadow-2xl transition-shadow duration-300"
@@ -105,7 +106,8 @@ const ShoppingCart = ({ showCart }) => {
               </div>
             </div>
           </div>
-        ))}
+        ))
+        ) : (<h1 className="absolute top-110 ml-30">No Products Here</h1>)}
       </div>
 
       {/* Total and Checkout */}
