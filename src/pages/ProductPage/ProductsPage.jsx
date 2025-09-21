@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Cards from "../../components/Cards/Cards";
 import DropDownFilter from "../../components/DropDownFilter/DropDownFilter";
@@ -7,15 +6,19 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((response) => response.json())
-      .then((json) => setProducts(json));
+      .then((json) => {
+        setProducts(json);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
-  
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.title
       .toLowerCase()
@@ -27,11 +30,12 @@ const ProductsPage = () => {
 
   return (
     <section>
-
-      <h1 className="text-center text-5xl lg:text-8xl playfair font-bold text-[#646B5D] mb-20">
+      <h1 className="text-center text-5xl lg:text-8xl playfair font-bold text-[#646B5D] mb-20 mt-10">
         Products
       </h1>
-      <div className="px-50 flex items-center justify-center gap-10 flex-col-reverse">
+
+      {/* Filter + Search */}
+      <div className="px-50 flex items-center justify-center gap-10 lg:flex-row flex-col-reverse">
         <DropDownFilter
           products={products}
           selected={selectedCategory}
@@ -47,18 +51,27 @@ const ProductsPage = () => {
           />
         </div>
       </div>
-      <div className="back-circles w-full h-screen -z-10 absolute flex items-center justify-between -mt-10">
-                <div className="circle-left bg-[#A7B3A2] rounded-full h-150 w-150 -ml-30 -mt-50"></div>
-                <div className="circle-right bg-[#A7B3A2] rounded-full h-150 w-150 -mr-60 mt-2  00"></div>
-            </div>
 
+      {/* Background Circles */}
+      <div className="back-circles w-full h-screen -z-10 absolute flex items-center justify-between -mt-10">
+        <div className="circle-left bg-[#A7B3A2] rounded-full h-150 w-150 -ml-30 -mt-50"></div>
+        <div className="circle-right bg-[#A7B3A2] rounded-full h-150 w-150 -mr-60 mt-2"></div>
+      </div>
+
+      {/* Loader or Cards */}
       <div className="cards mt-10 flex flex-wrap gap-20 items-center justify-center">
-        {filteredProducts.map((product) => (
-          <Cards
-            key={product.id}
-            product={product}
-          />
-        ))}
+        {loading ? (
+           <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-12 h-12 border-4 border-[#A7B3A2] border-t-transparent rounded-full animate-spin"></div>
+            <p className="mt-4 text-[#646B5D]">Loading products...</p>
+          </div>
+        ) : filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <Cards key={product.id} product={product} />
+          ))
+        ) : (
+          <p className="text-[#646B5D] text-lg">No products found.</p>
+        )}
       </div>
     </section>
   );

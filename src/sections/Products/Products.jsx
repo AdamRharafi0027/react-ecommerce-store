@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cards from "../../components/Cards/Cards";
 
 const Products = () => {
@@ -34,7 +34,11 @@ const Products = () => {
           onClick={() => navigate("/products")}
           className="bg-[#646B5D] text-white px-10 md:px-16 py-3 rounded-full text-lg md:text-xl hover:bg-[#A7B3A2] transition-colors"
         >
-          View All
+          <Link
+                    to={"/products"}
+                  >
+                    View All
+                  </Link>
         </button>
       </div>
     </section>

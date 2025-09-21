@@ -1,5 +1,5 @@
 import heroImage from "../../../public/images/hero.png"
-
+import "./Hero.css"
 const Hero = () => {
   return (
     <>
